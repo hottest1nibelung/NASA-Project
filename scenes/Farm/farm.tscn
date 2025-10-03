@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://w876klo6usa5"]
+
+[ext_resource type="PackedScene" uid="uid://dskyig0b46ajm" path="res://scenes/woman.tscn" id="1_crktd"]
+
+[node name="Farm" type="Node2D"]
+
+[node name="EnvironmentalObjects" type="Node2D" parent="."]
+
+[node name="Woman" parent="EnvironmentalObjects" instance=ExtResource("1_crktd")]
+position = Vector2(225, 99)

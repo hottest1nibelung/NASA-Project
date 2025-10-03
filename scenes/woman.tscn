@@ -1,0 +1,158 @@
+[gd_scene load_steps=23 format=3 uid="uid://dskyig0b46ajm"]
+
+[ext_resource type="Script" uid="uid://y1bpslomoeqf" path="res://scenes/woman.gd" id="1_kset0"]
+[ext_resource type="Texture2D" uid="uid://ctgrpomo0gma1" path="res://scenes/Farm/Slavic Woman/Woman_Idle.png" id="1_lbwyf"]
+[ext_resource type="Texture2D" uid="uid://cujt8ugxmwomi" path="res://scenes/Farm/Slavic Woman/Woman_Run.png" id="2_kset0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_311h6"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(0, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcgeh"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(22, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx0l6"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(44, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k01w1"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(66, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l1qn"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(88, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eceri"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(110, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5dwk"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(132, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7us6k"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(154, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78x4o"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(176, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ims"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(0, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kset0"]
+atlas = ExtResource("1_lbwyf")
+region = Rect2(0, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eggy"]
+atlas = ExtResource("2_kset0")
+region = Rect2(0, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixnbg"]
+atlas = ExtResource("2_kset0")
+region = Rect2(22, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_041cm"]
+atlas = ExtResource("2_kset0")
+region = Rect2(44, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45c3w"]
+atlas = ExtResource("2_kset0")
+region = Rect2(66, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5aic"]
+atlas = ExtResource("2_kset0")
+region = Rect2(88, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np13c"]
+atlas = ExtResource("2_kset0")
+region = Rect2(110, 0, 22, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sakj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_311h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcgeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx0l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k01w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l1qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eceri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5dwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7us6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78x4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53ims")
+}],
+"loop": false,
+"name": &"hands_raised",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kset0")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7eggy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixnbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_041cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45c3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5aic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np13c")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qhjq"]
+radius = 6.0
+
+[node name="Woman" type="CharacterBody2D"]
+script = ExtResource("1_kset0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_sakj6")
+animation = &"hands_raised"
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_3qhjq")
