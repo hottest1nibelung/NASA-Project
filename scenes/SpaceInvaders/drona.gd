@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 		laser.global_position = self.global_position
 		
 func hit_by_meteor():
+	print("hit")
 	get_tree().get_root().get_node("SpaceInvaders").lose_point()
 
 func die():
