@@ -30,6 +30,23 @@ func _process(delta: float) -> void:
 	
 	
 	var volume = clamp(1.0 - distance / max_distance, 0.0 , 0.5 )
-	beep_player.volume.db = linear_to_db(volume)
+	beep_player.volume_db = linear_to_db(volume)
 	
-	
+	var interval = lerp(min_interval, max_interval, distance / max_distance)
+	timer.wait_time = clamp(interval , min_interval , max_interval)
+	check_if_found()
+	if found:
+		time_found += delta
+		if time_found >= time_to_be_declared_found:
+			metal_found.emit(self)
+
+func _on_timer_timeout() -> void:
+	beep_player.play()
+
+
+func check_if_found():
+	if get_viewport().get_mouse_position().distance_to(target_position) < 20:
+		found=true
+	else:
+		found=false
+		time_found = 0
