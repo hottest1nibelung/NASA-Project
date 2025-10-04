@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3wiftfn2xpln"]
+[gd_scene load_steps=12 format=3 uid="uid://c3wiftfn2xpln"]
 
 [ext_resource type="Texture2D" uid="uid://cpqorpejk6a41" path="res://scenes/UI/ret_butt.png" id="1_41gti"]
+[ext_resource type="Script" uid="uid://b7w27mgm1eu26" path="res://scenes/UI/ui.gd" id="1_tpnoy"]
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="2_7e3k0"]
 [ext_resource type="Texture2D" uid="uid://fpw7ml5p3p8m" path="res://scenes/UI/options_butt.png" id="2_f54a5"]
+[ext_resource type="Script" uid="uid://dr1tun31hotka" path="res://scenes/UI/options_ui.gd" id="2_vb61p"]
 [ext_resource type="Texture2D" uid="uid://btttfcilesoeh" path="res://scenes/UI/textBox.png" id="3_7e3k0"]
+[ext_resource type="LabelSettings" uid="uid://ch8svj768mfrj" path="res://resources/brownLabel.tres" id="3_35jxk"]
+[ext_resource type="Texture2D" uid="uid://6uvgp0dfnhb6" path="res://scenes/UI/close_butt.png" id="3_m41qk"]
+[ext_resource type="FontFile" uid="uid://o0f4gdjt6i01" path="res://fonts/ELEGANT TYPEWRITER Bold.ttf" id="9_vb61p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_35jxk"]
+font = ExtResource("2_7e3k0")
+font_size = 100
+font_color = Color(0.89411765, 0.79607844, 0.58431375, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_owlbh"]
+font = ExtResource("9_vb61p")
+font_size = 30
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,29 +28,95 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tpnoy")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="OptionsUI" type="CanvasLayer" parent="."]
+script = ExtResource("2_vb61p")
 
-[node name="retButt" type="TextureButton" parent="CanvasLayer"]
-offset_left = 989.0
-offset_top = 9.0
-offset_right = 1139.0
-offset_bottom = 77.0
-texture_normal = ExtResource("1_41gti")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="optionsButt" type="TextureButton" parent="CanvasLayer"]
-offset_left = 991.0
-offset_top = 48.0
-offset_right = 1149.0
-offset_bottom = 153.0
-texture_normal = ExtResource("2_f54a5")
-ignore_texture_size = true
-stretch_mode = 4
-
-[node name="Menu" type="Sprite2D" parent="CanvasLayer"]
+[node name="MenuImage" type="Sprite2D" parent="OptionsUI"]
 position = Vector2(583, 342.00003)
 rotation = 1.5707964
 scale = Vector2(0.5166269, 0.5750938)
 texture = ExtResource("3_7e3k0")
+
+[node name="OptionsTitle" type="Label" parent="OptionsUI"]
+offset_left = 430.0
+offset_top = 126.0
+offset_right = 723.0
+offset_bottom = 213.0
+text = "Options"
+label_settings = SubResource("LabelSettings_35jxk")
+
+[node name="HScrollBar" type="HSlider" parent="OptionsUI"]
+offset_left = 459.0
+offset_top = 232.0
+offset_right = 700.0
+offset_bottom = 323.0
+
+[node name="HScrollBar2" type="HSlider" parent="OptionsUI"]
+offset_left = 459.0
+offset_top = 348.0
+offset_right = 700.0
+offset_bottom = 439.0
+
+[node name="MasterVolumeLabel" type="Label" parent="OptionsUI"]
+offset_left = 455.0
+offset_top = 239.0
+offset_right = 641.0
+offset_bottom = 270.0
+text = "Master Volume:"
+label_settings = ExtResource("3_35jxk")
+
+[node name="MasterVolumeLabel2" type="Label" parent="OptionsUI"]
+offset_left = 457.0
+offset_top = 352.0
+offset_right = 643.0
+offset_bottom = 383.0
+text = "Effects Volume:"
+label_settings = ExtResource("3_35jxk")
+
+[node name="closeButt" type="TextureButton" parent="OptionsUI"]
+offset_left = 493.0
+offset_top = 450.0
+offset_right = 651.0
+offset_bottom = 533.0
+texture_normal = ExtResource("3_m41qk")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ButtonsAndLabels" type="CanvasLayer" parent="."]
+
+[node name="retButt" type="TextureButton" parent="ButtonsAndLabels"]
+offset_left = 993.0
+offset_top = -2.0
+offset_right = 1143.0
+offset_bottom = 67.0
+texture_normal = ExtResource("1_41gti")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="optionsButt" type="TextureButton" parent="ButtonsAndLabels"]
+offset_left = 991.0
+offset_top = 53.0
+offset_right = 1149.0
+offset_bottom = 158.0
+texture_normal = ExtResource("2_f54a5")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CountLabel" type="Label" parent="ButtonsAndLabels"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Enemies left to kill: 0"
+label_settings = SubResource("LabelSettings_owlbh")
+
+[node name="LivesLabel" type="Label" parent="ButtonsAndLabels"]
+offset_top = 48.0
+offset_right = 344.0
+offset_bottom = 83.0
+text = "Lives: 3"
+label_settings = SubResource("LabelSettings_owlbh")
+
+[connection signal="pressed" from="OptionsUI/closeButt" to="." method="_on_close_butt_pressed"]
+[connection signal="pressed" from="ButtonsAndLabels/retButt" to="." method="_on_ret_butt_pressed"]
+[connection signal="pressed" from="ButtonsAndLabels/optionsButt" to="." method="_on_options_butt_pressed"]

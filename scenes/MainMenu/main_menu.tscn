@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3h8dxypimi3k" path="res://scenes/MainMenu/main_menu.gd" id="1_fxnin"]
 [ext_resource type="Texture2D" uid="uid://bjyakj57t7mrf" path="res://scenes/MainMenu/back.png" id="1_tpeu6"]
+[ext_resource type="LabelSettings" uid="uid://cnwuvk7sodp0i" path="res://resources/BeautifulLabel.tres" id="3_6mm1t"]
 [ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="3_7vhwp"]
 [ext_resource type="PackedScene" uid="uid://diy1v2gyh3awa" path="res://scenes/MainMenu/pasare.tscn" id="4_kfapv"]
 
@@ -13,13 +14,6 @@ gradient = SubResource("Gradient_tpeu6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.89719623, 0.21495327)
-
-[sub_resource type="LabelSettings" id="LabelSettings_kfapv"]
-font = ExtResource("3_7vhwp")
-font_size = 100
-font_color = Color(0.83137256, 0.83137256, 0.32156864, 1)
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -58,7 +52,7 @@ offset_top = 78.0
 offset_bottom = 165.0
 grow_horizontal = 2
 text = "Farming SciMulator"
-label_settings = SubResource("LabelSettings_kfapv")
+label_settings = ExtResource("3_6mm1t")
 horizontal_alignment = 1
 
 [node name="playButt" type="Button" parent="CanvasLayer"]

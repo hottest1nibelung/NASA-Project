@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ch8svj768mfrj"]
+
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="1_g3h2x"]
+
+[resource]
+font = ExtResource("1_g3h2x")
+font_size = 30
+font_color = Color(0.34117648, 0.23529412, 0.20784314, 1)
+outline_color = Color(0, 0, 0, 1)
