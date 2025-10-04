@@ -25,11 +25,8 @@ func player_hit ():
 
 func _destroy():
 	$CPUParticles2D.emitting = false
-	$CollisionShape2D.disabled = true
 	$KillTime.start()
-	print("destroyed")
-	collision_layer = 3 
-	collision_mask = 3
+	$CollisionShape2D.queue_free()
 	$CanvasLayer.visible = false
 	freed = true
 	
