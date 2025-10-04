@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://dl4w0m7apxfde"]
+[gd_scene load_steps=86 format=3 uid="uid://dl4w0m7apxfde"]
 
 [ext_resource type="Script" uid="uid://btjp4n22yr72b" path="res://scenes/playMusictoThePlants/play_music_game.gd" id="1_5gchd"]
 [ext_resource type="Texture2D" uid="uid://oy8miwks2qcl" path="res://scenes/playMusictoThePlants/Keys/A-Key.png" id="2_2n2nl"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cva88ja51svho" path="res://scenes/playMusictoThePlants/Keys/Y-Key.png" id="26_hf5ri"]
 [ext_resource type="Texture2D" uid="uid://der8j5ui4agj4" path="res://scenes/playMusictoThePlants/Keys/Z-Key.png" id="27_6ppya"]
 [ext_resource type="Texture2D" uid="uid://cuyqqwhh0vkib" path="res://scenes/playMusictoThePlants/greenHouse.png" id="28_y3chy"]
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="29_a35ed"]
 [ext_resource type="Texture2D" uid="uid://cnmgye8caar03" path="res://scenes/playMusictoThePlants/progress bars/red_bar.png" id="29_v8o0s"]
 [ext_resource type="Script" uid="uid://hsrnrnasducc" path="res://scenes/playMusictoThePlants/texture_progress_bar.gd" id="30_a35ed"]
 
@@ -528,13 +529,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_v8o0s"]
+[sub_resource type="LabelSettings" id="LabelSettings_xp7ce"]
+font = ExtResource("29_a35ed")
+font_size = 40
+font_color = Color(0.5648739, 0.42085788, 0.70947355, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="playMusicGame" type="Node2D"]
 script = ExtResource("1_5gchd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(556, 412)
+position = Vector2(549.00006, 578)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_f0vxh")
 animation = &"b"
 
@@ -552,18 +559,21 @@ expand_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="HappinessLabel" type="Label" parent="."]
-offset_left = 465.0
-offset_top = 454.0
-offset_right = 608.0
-offset_bottom = 477.0
-text = "Level of happiness"
+offset_left = 411.0
+offset_top = 386.0
+offset_right = 687.0
+offset_bottom = 432.0
+text = "Level of happiness:"
+label_settings = SubResource("LabelSettings_xp7ce")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 502.0
-offset_top = 496.0
-offset_right = 598.0
-offset_bottom = 536.0
-value = 50.0
-texture_under = SubResource("CanvasTexture_v8o0s")
+offset_left = 511.0
+offset_top = 452.0
+offset_right = 607.0
+offset_bottom = 476.0
+size_flags_stretch_ratio = 4.95
+value = 100.0
 texture_progress = ExtResource("29_v8o0s")
 script = ExtResource("30_a35ed")
+
+[node name="texutre" type="Node2D" parent="."]
