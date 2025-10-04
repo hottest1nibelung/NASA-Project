@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 
 
 func _on_play_butt_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Farm/farm.tscn")
+	$CanvasLayer/PlayButts.visible = false
+	$CanvasLayer/MapButts.visible = true
 
 
 func _on_exit_butt_pressed() -> void:

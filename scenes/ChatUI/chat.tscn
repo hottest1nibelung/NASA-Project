@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://n7dfoyr7de8h"]
+
+[ext_resource type="Script" uid="uid://dq7qpb6wajpw7" path="res://scenes/ChatUI/chat.gd" id="1_vblpv"]
+[ext_resource type="Texture2D" uid="uid://bjfr6bikt02gm" path="res://scenes/ChatUI/Talking with the NPCS/Robot_chatGPT.png" id="1_yqbr3"]
+[ext_resource type="Texture2D" uid="uid://dddshwfb6h7n" path="res://scenes/ChatUI/Talking with the NPCS/textBox.png" id="2_tsifs"]
+[ext_resource type="FontFile" uid="uid://o0f4gdjt6i01" path="res://fonts/ELEGANT TYPEWRITER Bold.ttf" id="3_e7k6q"]
+[ext_resource type="Texture2D" uid="uid://bw6nkdujlsytb" path="res://scenes/ChatUI/Talking with the NPCS/final_button.png" id="4_ed2m0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsifs"]
+atlas = ExtResource("1_yqbr3")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7k6q"]
+atlas = ExtResource("1_yqbr3")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed2m0"]
+atlas = ExtResource("1_yqbr3")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vblpv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsifs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7k6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed2m0")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}]
+
+[node name="Chat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vblpv")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(218, 219)
+sprite_frames = SubResource("SpriteFrames_vblpv")
+animation = &"idle"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -377.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_tsifs")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 95.0
+offset_top = 385.0
+offset_right = 939.0
+offset_bottom = 588.0
+theme_override_colors/default_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+theme_override_fonts/normal_font = ExtResource("3_e7k6q")
+theme_override_font_sizes/normal_font_size = 30
+text = "Panaramadwadwwadffwadfggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggwddwadwdwdwdddgggggggggggggggggggggggg"
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 952.0
+offset_top = 604.0
+offset_right = 1129.0
+offset_bottom = 776.0
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_ed2m0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
