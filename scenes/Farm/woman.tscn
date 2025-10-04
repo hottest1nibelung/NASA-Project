@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dskyig0b46ajm"]
 
-[ext_resource type="Script" uid="uid://y1bpslomoeqf" path="res://scenes/woman.gd" id="1_kset0"]
+[ext_resource type="Script" uid="uid://y1bpslomoeqf" path="res://scenes/Farm/woman.gd" id="1_kset0"]
 [ext_resource type="Texture2D" uid="uid://ctgrpomo0gma1" path="res://scenes/Farm/Slavic Woman/Woman_Idle.png" id="1_lbwyf"]
 [ext_resource type="Texture2D" uid="uid://cujt8ugxmwomi" path="res://scenes/Farm/Slavic Woman/Woman_Run.png" id="2_kset0"]
 

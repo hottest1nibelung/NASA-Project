@@ -27,4 +27,3 @@ func _physics_process(delta: float) -> void:
 		if int(time_spent_idle) % TIME_BEFORE_RAISING_HANDS == 0:
 			time_spent_idle = 1
 			animation.play("hands_raised")
-			print("yes")

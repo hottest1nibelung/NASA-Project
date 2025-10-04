@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://di80335ol077s"]
+
+[ext_resource type="Script" uid="uid://d3h8dxypimi3k" path="res://scenes/MainMenu/main_menu.gd" id="1_fxnin"]
+[ext_resource type="Texture2D" uid="uid://bjyakj57t7mrf" path="res://scenes/MainMenu/back.png" id="1_tpeu6"]
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="3_7vhwp"]
+[ext_resource type="PackedScene" uid="uid://diy1v2gyh3awa" path="res://scenes/MainMenu/pasare.tscn" id="4_kfapv"]
+
+[sub_resource type="Gradient" id="Gradient_tpeu6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxnin"]
+gradient = SubResource("Gradient_tpeu6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.89719623, 0.21495327)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfapv"]
+font = ExtResource("3_7vhwp")
+font_size = 100
+font_color = Color(0.83137256, 0.83137256, 0.32156864, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fxnin")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tpeu6")
+expand_mode = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(624, 334)
+scale = Vector2(5, 5)
+energy = 0.74
+texture = SubResource("GradientTexture2D_fxnin")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TItle" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 78.0
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "Farming SciMulator"
+label_settings = SubResource("LabelSettings_kfapv")
+horizontal_alignment = 1
+
+[node name="playButt" type="Button" parent="CanvasLayer"]
+offset_left = 913.0
+offset_top = 448.0
+offset_right = 1133.0
+offset_bottom = 524.0
+theme_override_fonts/font = ExtResource("3_7vhwp")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="exitButt" type="Button" parent="CanvasLayer"]
+offset_left = 914.0
+offset_top = 532.0
+offset_right = 1134.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("3_7vhwp")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game"
+
+[node name="Pasare" parent="." instance=ExtResource("4_kfapv")]
+position = Vector2(72, 273)
+
+[node name="Pasare3" parent="." instance=ExtResource("4_kfapv")]
+position = Vector2(383, 377)
+
+[node name="Pasare2" parent="." instance=ExtResource("4_kfapv")]
+position = Vector2(991, 398)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="pressed" from="CanvasLayer/playButt" to="." method="_on_play_butt_pressed"]
+[connection signal="pressed" from="CanvasLayer/exitButt" to="." method="_on_exit_butt_pressed"]
