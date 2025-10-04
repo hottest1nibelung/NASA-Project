@@ -20,9 +20,11 @@ config/icon="uid://dfp3vraa6daio"
 
 Ai="*res://scripts/AI.gd"
 Global="*res://scripts/Global.gd"
+CardGame="*res://scenes/cardGame/CardGame.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

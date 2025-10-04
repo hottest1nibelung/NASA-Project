@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://dnsxyckmjdu30"]
+[gd_scene load_steps=2 format=3 uid="uid://dnsxyckmjdu30"]
 
-[node name="cardGame" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://wbxy7ckngtxp" path="res://scenes/cardGame/cardsTable.png" id="1_h2pdi"]
+
+[node name="cardGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h2pdi")
+expand_mode = 1
+
+[node name="LookAtCards_timer" type="Timer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 1152.0
+offset_bottom = 554.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 8
