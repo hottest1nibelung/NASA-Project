@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://di80335ol077s"]
+[gd_scene load_steps=9 format=3 uid="uid://di80335ol077s"]
 
 [ext_resource type="Script" uid="uid://d3h8dxypimi3k" path="res://scenes/MainMenu/main_menu.gd" id="1_fxnin"]
 [ext_resource type="Texture2D" uid="uid://bjyakj57t7mrf" path="res://scenes/MainMenu/back.png" id="1_tpeu6"]
 [ext_resource type="LabelSettings" uid="uid://cnwuvk7sodp0i" path="res://resources/BeautifulLabel.tres" id="3_6mm1t"]
 [ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="3_7vhwp"]
 [ext_resource type="PackedScene" uid="uid://diy1v2gyh3awa" path="res://scenes/MainMenu/pasare.tscn" id="4_kfapv"]
+[ext_resource type="LabelSettings" uid="uid://ch8svj768mfrj" path="res://resources/brownLabel.tres" id="5_w5i37"]
 
 [sub_resource type="Gradient" id="Gradient_tpeu6"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -48,14 +49,62 @@ texture = SubResource("GradientTexture2D_fxnin")
 [node name="TItle" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 78.0
-offset_bottom = 165.0
+offset_left = -1.0
+offset_top = 47.0
+offset_right = -1.0
+offset_bottom = 134.0
 grow_horizontal = 2
 text = "Farming SciMulator"
 label_settings = ExtResource("3_6mm1t")
 horizontal_alignment = 1
 
-[node name="playButt" type="Button" parent="CanvasLayer"]
+[node name="MapButts" type="Node2D" parent="CanvasLayer"]
+position = Vector2(72, 1)
+
+[node name="desertButt" type="Button" parent="CanvasLayer/MapButts"]
+offset_left = 395.0
+offset_top = 294.0
+offset_right = 615.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("3_7vhwp")
+theme_override_font_sizes/font_size = 40
+text = "Desert"
+
+[node name="meadowButt" type="Button" parent="CanvasLayer/MapButts"]
+offset_left = 395.0
+offset_top = 383.0
+offset_right = 615.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("3_7vhwp")
+theme_override_font_sizes/font_size = 40
+text = "Meadow"
+
+[node name="Mountain" type="Button" parent="CanvasLayer/MapButts"]
+offset_left = 395.0
+offset_top = 472.0
+offset_right = 615.0
+offset_bottom = 548.0
+theme_override_fonts/font = ExtResource("3_7vhwp")
+theme_override_font_sizes/font_size = 40
+text = "Mountain"
+
+[node name="ChooseMap" type="Label" parent="CanvasLayer/MapButts"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 261.0
+offset_top = 198.0
+offset_right = 797.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Choose Farm region"
+label_settings = ExtResource("5_w5i37")
+
+[node name="PlayButts" type="Node2D" parent="CanvasLayer"]
+
+[node name="playButt" type="Button" parent="CanvasLayer/PlayButts"]
 offset_left = 913.0
 offset_top = 448.0
 offset_right = 1133.0
@@ -64,8 +113,8 @@ theme_override_fonts/font = ExtResource("3_7vhwp")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
-[node name="exitButt" type="Button" parent="CanvasLayer"]
-offset_left = 914.0
+[node name="exitButt" type="Button" parent="CanvasLayer/PlayButts"]
+offset_left = 913.0
 offset_top = 532.0
 offset_right = 1134.0
 offset_bottom = 608.0
@@ -83,5 +132,5 @@ position = Vector2(383, 377)
 position = Vector2(991, 398)
 scale = Vector2(0.7, 0.7)
 
-[connection signal="pressed" from="CanvasLayer/playButt" to="." method="_on_play_butt_pressed"]
-[connection signal="pressed" from="CanvasLayer/exitButt" to="." method="_on_exit_butt_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayButts/playButt" to="." method="_on_play_butt_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayButts/exitButt" to="." method="_on_exit_butt_pressed"]

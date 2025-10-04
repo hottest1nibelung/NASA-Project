@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Final Project"
+run/main_scene="uid://di80335ol077s"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.033853278, 0.033853278, 0.033853274, 1)
 boot_splash/image="uid://dfp3vraa6daio"
@@ -23,6 +24,7 @@ Global="*res://scripts/Global.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]
