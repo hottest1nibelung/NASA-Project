@@ -4,8 +4,8 @@ const WINNING_SCREEN = preload("uid://e24pdkg7jh5j")
 const LOSING_SCREEN = preload("uid://dnsj7vlq5weeg")
 @onready var wait: Timer = $wait
 
-var cnt = 2
-var lives = 1
+var cnt = 30
+var lives = 3
 var status = null
 var meteors = []
 
