@@ -5,9 +5,14 @@ const RED_BAR = preload("uid://cnmgye8caar03")
 const YELLOW_BAR = preload("uid://b6s6lswboi4o5")
 
 
-# Called when the node enters the scene tree for the first time.
+func modify_color(progress):
+	value = progress
+	if progress < 33:
+		texture_progress = RED_BAR
+	elif progress < 66: texture_progress = YELLOW_BAR
+	else: texture_progress = GREEN_BAR
 func _ready() -> void:
-	texture_progress = GREEN_BAR
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
