@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://bla64dxlrrwtc"]
+
+[ext_resource type="Texture2D" uid="uid://dss6ekn528ns0" path="res://scenes/shoot bugs/ChatGPT Image Oct 4, 2025, 04_32_17 PM.png" id="1_5b20n"]
+[ext_resource type="Script" uid="uid://bmv8nt17beg6t" path="res://scenes/shoot bugs/shoot_bugs.gd" id="1_yeqka"]
+[ext_resource type="Script" uid="uid://bp3808qw1d1mp" path="res://scenes/shoot bugs/vegetable.gd" id="2_jufmg"]
+[ext_resource type="Texture2D" uid="uid://kbsxsydd78ns" path="res://scenes/shoot bugs/crops.png" id="2_p2kv6"]
+[ext_resource type="PackedScene" uid="uid://b4wc4a2l43ne4" path="res://scenes/shoot bugs/player_bugs.tscn" id="3_x0b85"]
+[ext_resource type="Texture2D" uid="uid://cnmgye8caar03" path="res://scenes/playMusictoThePlants/progress bars/red_bar.png" id="4_efhyx"]
+[ext_resource type="PackedScene" uid="uid://dspaymgdxdkox" path="res://scenes/shoot bugs/enemy_spawner.tscn" id="8_n8djx"]
+[ext_resource type="PackedScene" uid="uid://c3wiftfn2xpln" path="res://scenes/UI/ui.tscn" id="9_3odf0"]
+[ext_resource type="LabelSettings" uid="uid://ch8svj768mfrj" path="res://resources/brownLabel.tres" id="9_vvw8e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0b85"]
+atlas = ExtResource("2_p2kv6")
+region = Rect2(864, 192, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waoxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0b85")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0b85"]
+radius = 91.08787
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_waoxg"]
+radius = 98.005104
+
+[node name="shootBugs" type="Node2D"]
+script = ExtResource("1_yeqka")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5b20n")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Vegetable" type="StaticBody2D" parent="."]
+z_index = 2
+position = Vector2(565, 282)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("2_jufmg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Vegetable"]
+position = Vector2(-9, -118)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_waoxg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetable"]
+visible = false
+shape = SubResource("CircleShape2D_x0b85")
+
+[node name="hitBox" type="Area2D" parent="Vegetable"]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegetable/hitBox"]
+visible = false
+shape = SubResource("CircleShape2D_waoxg")
+
+[node name="healthBar" type="TextureProgressBar" parent="Vegetable"]
+offset_left = -39.0
+offset_top = 78.0
+offset_right = 61.0
+offset_bottom = 109.0
+texture_progress = ExtResource("4_efhyx")
+
+[node name="Player_bugs" parent="." instance=ExtResource("3_x0b85")]
+position = Vector2(280, 144)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("8_n8djx")]
+position = Vector2(1312, 376)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("8_n8djx")]
+position = Vector2(54, 787)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("8_n8djx")]
+position = Vector2(-262, 582)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("8_n8djx")]
+position = Vector2(930, -134)
+
+[node name="timeBeforeGameOver" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 22.0
+offset_top = 12.0
+offset_right = 252.0
+offset_bottom = 38.0
+text = "Time left to survive: "
+label_settings = ExtResource("9_vvw8e")
+
+[node name="UI" parent="." instance=ExtResource("9_3odf0")]
+
+[node name="CountLabel" parent="UI/ButtonsAndLabels" index="2"]
+visible = false
+
+[node name="LivesLabel" parent="UI/ButtonsAndLabels" index="3"]
+visible = false
+
+[connection signal="body_entered" from="Vegetable/hitBox" to="Vegetable" method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="timeBeforeGameOver" to="." method="_on_time_before_game_over_timeout"]
+
+[editable path="EnemySpawner3"]
+[editable path="UI"]

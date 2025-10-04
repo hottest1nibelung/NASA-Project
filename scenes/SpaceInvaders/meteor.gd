@@ -3,10 +3,14 @@ extends Area2D
 var SPEED = randf_range(200,300)
 var freed = false;
 @onready var name_label: Label = $NameLabel
+@onready var cs = $CollisionShape2D
+@onready var main: Node2D = get_tree().get_root().get_node("SpaceInvaders")
 
 func _ready() -> void:
 	pass
 func _process(delta: float) -> void:
+	if main.status:
+		return
 	global_position.y += SPEED * delta
 	$CanvasLayer/NameLabel.position = global_position
 	$CanvasLayer/NameLabel.position.x +=20
@@ -21,12 +25,11 @@ func giveName(name):
 func player_hit ():
 	pass
 
-
-
 func _destroy():
 	$CPUParticles2D.emitting = false
 	$KillTime.start()
-	$CollisionShape2D.queue_free()
+	main.meteors.erase(self)
+	cs.queue_free()
 	$CanvasLayer.visible = false
 	freed = true
 	

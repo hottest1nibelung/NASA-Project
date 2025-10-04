@@ -17,4 +17,5 @@ func _hide():
 
 func _on_retry_butt_pressed() -> void:
 	_hide()
-	#get_tree().reload_current_scene()
+	get_tree().paused = false
+	get_tree().reload_current_scene()

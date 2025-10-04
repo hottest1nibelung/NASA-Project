@@ -214,10 +214,11 @@ script = ExtResource("1_23l2a")
 sprite_frames = SubResource("SpriteFrames_rlpqg")
 animation = &"death"
 autoplay = "idle"
+offset = Vector2(-30, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -2)
+position = Vector2(-33, -1.0000014)
 shape = SubResource("CircleShape2D_a57g6")
 
 [node name="coolDown" type="Timer" parent="."]

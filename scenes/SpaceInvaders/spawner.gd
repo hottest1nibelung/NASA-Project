@@ -24,9 +24,11 @@ var max_time = 1.5
 func _ready() -> void:
 	spawn_time.wait_time = randf_range(min_time,max_time)
 	spawn_time.start()
+func _process(delta: float) -> void:
+	if get_parent().status:
+		spawn_time.stop()
 
-
-func giveName (meteor):
+func giveName(meteor):
 	if unusedNames.size() == 0:
 		unusedNames = meteorNames
 	var _name = randomName()
@@ -34,10 +36,14 @@ func giveName (meteor):
 	meteor.giveName(_name)
 
 func _on_spawn_time_timeout() -> void:
+	if get_parent().status:
+		spawn_time.stop()
+		return
 	var meteor = meteor_scene.instantiate()
 	add_child(meteor)
 	meteor.global_position.x = randf_range(Global.min_x,Global.max_x)
 	giveName(meteor)
+	get_parent().meteors.append(meteor)
 	
 	spawn_time.wait_time = randf_range(min_time,max_time)
 	spawn_time.start()

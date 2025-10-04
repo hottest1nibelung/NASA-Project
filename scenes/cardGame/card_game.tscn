@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnsxyckmjdu30"]
+[gd_scene load_steps=4 format=3 uid="uid://dnsxyckmjdu30"]
 
 [ext_resource type="Texture2D" uid="uid://wbxy7ckngtxp" path="res://scenes/cardGame/cardsTable.png" id="1_h2pdi"]
 [ext_resource type="Script" uid="uid://b5j1mvh5565fn" path="res://scenes/cardGame/CardGame.gd" id="1_pcbsu"]
+[ext_resource type="PackedScene" uid="uid://c3wiftfn2xpln" path="res://scenes/UI/ui.tscn" id="3_gvotu"]
 
 [node name="cardGame" type="Control"]
 layout_mode = 3
@@ -24,10 +25,22 @@ expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_top = 98.0
-offset_right = 1152.0
+offset_left = 95.0
+offset_top = 137.0
+offset_right = 1057.0
 offset_bottom = 554.0
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 columns = 8
+
+[node name="UI" parent="." instance=ExtResource("3_gvotu")]
+layout_mode = 1
+
+[node name="CountLabel" parent="UI/ButtonsAndLabels" index="2"]
+visible = false
+
+[node name="LivesLabel" parent="UI/ButtonsAndLabels" index="3"]
+visible = false
+
+[editable path="UI"]

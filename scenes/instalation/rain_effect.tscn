@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwlpjm2s3ikke"]
+
+[sub_resource type="Curve" id="Curve_b0h8j"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sds1o"]
+_limits = [0.0, 30.0, 0.0, 1.0]
+_data = [Vector2(0.01345291, 12.8089905), 0.0, 144.55487, 0, 0, Vector2(0.3408072, 30), 0.0, 0.0, 0, 0, Vector2(0.9887387, 30), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_nvxg8"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_2ywr3"]
+curve_x = SubResource("Curve_b0h8j")
+curve_y = SubResource("Curve_sds1o")
+curve_z = SubResource("Curve_nvxg8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqgcu"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+gravity = Vector3(0, 100, 0)
+scale_min = 0.19999999
+scale_over_velocity_curve = SubResource("CurveXYZTexture_2ywr3")
+
+[node name="Rain effect" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(363, 337)
+amount = 10
+lifetime = 2.0
+preprocess = 0.5
+visibility_rect = Rect2(-50, -200, 100, 200)
+process_material = SubResource("ParticleProcessMaterial_pqgcu")

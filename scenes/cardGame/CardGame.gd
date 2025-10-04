@@ -6,7 +6,12 @@ extends Node
 const WINNING_SCREEN = preload("uid://e24pdkg7jh5j")
 const LOSING_SCREEN = preload("uid://dnsj7vlq5weeg")
 
-var nrPairs = 0
+func win_game():
+	var wining_screen = WINNING_SCREEN.instantiate()
+	add_child(wining_screen)
+	
+
+var nrPairs
 var gameOver = false
 var score = 0
 var nr_of_cards = 8
@@ -17,7 +22,7 @@ var deck = []
 
 func _ready() -> void:
 	print(main)
-	nrPairs = 15
+	nrPairs = 0
 	gameOver = false
 	timer.wait_time = 1
 	timer.one_shot = true
@@ -26,7 +31,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if nrPairs == 16:
-		gameOver = true
+		win_game()
 		
 
 func cardPressed(c):
