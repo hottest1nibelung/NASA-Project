@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpi8rllcwvhir"]
+
+[ext_resource type="Script" uid="uid://birji31jkqytm" path="res://scenes/SpaceInvaders/space_invaders.gd" id="1_22gc8"]
+[ext_resource type="PackedScene" uid="uid://c6mrtdxp2mpq0" path="res://scenes/SpaceInvaders/drona.tscn" id="1_qcip4"]
+[ext_resource type="Script" uid="uid://bc0jmv6d7lefp" path="res://scenes/SpaceInvaders/spawner.gd" id="2_57pvh"]
+[ext_resource type="Texture2D" uid="uid://b7rr2lo1gjkp0" path="res://scenes/SpaceInvaders/Earth Background.png" id="2_ox4bc"]
+
+[node name="SpaceInvaders" type="Node2D"]
+script = ExtResource("1_22gc8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ox4bc")
+expand_mode = 1
+
+[node name="Drona" parent="." instance=ExtResource("1_qcip4")]
+position = Vector2(598, 605)
+
+[node name="waitBeforeUI" type="Timer" parent="Drona"]
+one_shot = true
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(565, -228)
+rotation = -1.5707964
+script = ExtResource("2_57pvh")
+
+[node name="SpawnTime" type="Timer" parent="Spawner"]
+
+[connection signal="timeout" from="Drona/waitBeforeUI" to="." method="_on_wait_before_ui_timeout"]
+[connection signal="timeout" from="Spawner/SpawnTime" to="Spawner" method="_on_spawn_time_timeout"]

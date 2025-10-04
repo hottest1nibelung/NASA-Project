@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnaksideqv64q"]
+
+[ext_resource type="Script" uid="uid://tcjjrlgudiho" path="res://scenes/SpaceInvaders/meteor.gd" id="1_gccsb"]
+
+[sub_resource type="Gradient" id="Gradient_vmjm5"]
+offsets = PackedFloat32Array(0.1369863, 0.41095892, 0.65753424, 0.9246575)
+colors = PackedColorArray(0, 0, 0, 1, 0.64771605, 0.30880722, 0.14555591, 1, 0.9120254, 0.66853684, 0.16326037, 1, 0.9999935, 0.25207162, 0.61563694, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmjm5"]
+radius = 6.0
+
+[node name="Meteor" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_gccsb")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -0.20000029)
+scale = Vector2(2, 2)
+amount = 18000
+lifetime = 0.5
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, -600)
+radial_accel_min = 100.0
+radial_accel_max = 500.0
+color_ramp = SubResource("Gradient_vmjm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_vmjm5")
+
+[node name="KillTime" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="KillTime" to="." method="_on_kill_time_timeout"]
