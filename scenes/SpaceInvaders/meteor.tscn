@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tcjjrlgudiho" path="res://scenes/SpaceInvaders/meteor.gd" id="1_gccsb"]
 
 [sub_resource type="Gradient" id="Gradient_vmjm5"]
-offsets = PackedFloat32Array(0.1369863, 0.41095892, 0.65753424, 0.9246575)
-colors = PackedColorArray(0, 0, 0, 1, 0.64771605, 0.30880722, 0.14555591, 1, 0.9120254, 0.66853684, 0.16326037, 1, 0.9999935, 0.25207162, 0.61563694, 1)
+offsets = PackedFloat32Array(0.13013698, 0.3219178, 0.55479455, 1)
+colors = PackedColorArray(0.31061742, 0.31061694, 0.3106171, 1, 0.12941177, 0.5176471, 0.6, 1, 0.14238065, 0.59085804, 0.47743142, 1, 0.30166557, 0.51259863, 0.1559374, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vmjm5"]
 radius = 6.0
