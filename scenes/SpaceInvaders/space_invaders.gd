@@ -6,7 +6,6 @@ var lives = 3
 var status = null
 
 func _process(delta: float) -> void:
-	print(lives)
 	if cnt <= 0:
 		wait_before_ui.start()
 		print("done")

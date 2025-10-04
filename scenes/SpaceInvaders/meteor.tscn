@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnaksideqv64q"]
+[gd_scene load_steps=6 format=3 uid="uid://cnaksideqv64q"]
 
 [ext_resource type="Script" uid="uid://tcjjrlgudiho" path="res://scenes/SpaceInvaders/meteor.gd" id="1_gccsb"]
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="2_37cy4"]
 
 [sub_resource type="Gradient" id="Gradient_vmjm5"]
 offsets = PackedFloat32Array(0.13013698, 0.3219178, 0.55479455, 1)
@@ -8,6 +9,12 @@ colors = PackedColorArray(0.31061742, 0.31061694, 0.3106171, 1, 0.12941177, 0.51
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vmjm5"]
 radius = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_uduho"]
+font = ExtResource("2_37cy4")
+font_size = 30
+font_color = Color(0.8038571, 0.6637453, 0.62703687, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Meteor" type="Area2D"]
 scale = Vector2(5, 5)
@@ -26,11 +33,20 @@ radial_accel_max = 500.0
 color_ramp = SubResource("Gradient_vmjm5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -4)
+position = Vector2(-0.19999999, -1.4000001)
 shape = SubResource("CircleShape2D_vmjm5")
 
 [node name="KillTime" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NameLabel" type="Label" parent="CanvasLayer"]
+offset_left = 47.0
+offset_top = -29.0
+offset_right = 87.0
+offset_bottom = -3.0
+text = "fae"
+label_settings = SubResource("LabelSettings_uduho")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
