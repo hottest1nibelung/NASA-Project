@@ -1,6 +1,6 @@
 extends Node
 
-@onready var main = get_tree().get_root().get_node("cardGame")
+@onready var main = self
 @onready var grid: GridContainer = main.get_node("MarginContainer/GridContainer")
 @onready var timer: Timer = main.get_node("LookAtCards_timer")
 const WINNING_SCREEN = preload("uid://e24pdkg7jh5j")
@@ -16,6 +16,7 @@ var card2 = null
 var deck = []
 
 func _ready() -> void:
+	print(main)
 	nrPairs = 15
 	gameOver = false
 	timer.wait_time = 1

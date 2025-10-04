@@ -1,6 +1,7 @@
 extends TextureButton
 
 class_name Card
+@onready var card_game
 
 var image_front
 var image_back
@@ -9,6 +10,7 @@ var isRemoved
 var showing = false
 
 func _ready() -> void:
+	card_game = get_tree().get_root().get_node("cardGame")
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	size_flags_vertical = Control.SIZE_EXPAND_FILL
 	set_ignore_texture_size(true)
@@ -29,4 +31,4 @@ func flip():
 		texture_normal = image_front
 
 func _pressed() -> void:
-	CardGame.cardPressed(self)
+	card_game.cardPressed(self)

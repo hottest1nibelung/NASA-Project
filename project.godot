@@ -20,7 +20,6 @@ config/icon="uid://dfp3vraa6daio"
 
 Ai="*res://scripts/AI.gd"
 Global="*res://scripts/Global.gd"
-CardGame="*res://scenes/cardGame/CardGame.gd"
 
 [display]
 
