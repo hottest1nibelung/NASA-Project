@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://di80335ol077s"]
+[gd_scene load_steps=8 format=3 uid="uid://di80335ol077s"]
 
 [ext_resource type="Script" uid="uid://d3h8dxypimi3k" path="res://scenes/MainMenu/main_menu.gd" id="1_fxnin"]
 [ext_resource type="Texture2D" uid="uid://bjyakj57t7mrf" path="res://scenes/MainMenu/back.png" id="1_tpeu6"]
@@ -14,12 +14,6 @@ gradient = SubResource("Gradient_tpeu6")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.89719623, 0.21495327)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6mm1t"]
-font = ExtResource("3_7vhwp")
-font_size = 70
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -92,20 +86,6 @@ offset_bottom = 548.0
 theme_override_fonts/font = ExtResource("3_7vhwp")
 theme_override_font_sizes/font_size = 40
 text = "Mountain"
-
-[node name="ChooseMap" type="Label" parent="CanvasLayer/MapButts"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 261.0
-offset_top = 198.0
-offset_right = 797.0
-offset_bottom = 285.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Choose Farm region"
-label_settings = SubResource("LabelSettings_6mm1t")
 
 [node name="PlayButts" type="Node2D" parent="CanvasLayer"]
 
