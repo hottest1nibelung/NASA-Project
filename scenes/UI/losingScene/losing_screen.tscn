@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnsj7vlq5weeg"]
 
 [ext_resource type="Texture2D" uid="uid://btttfcilesoeh" path="res://scenes/UI/textBox.png" id="1_fvyk7"]
-[ext_resource type="Script" uid="uid://d3f8wwgqblbxg" path="res://scenes/losingScene/losing_screen.gd" id="1_oag4w"]
+[ext_resource type="Script" uid="uid://d3f8wwgqblbxg" path="res://scenes/UI/losingScene/losing_screen.gd" id="1_oag4w"]
 [ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="2_0qrdk"]
 [ext_resource type="Texture2D" uid="uid://c035v77nnoomf" path="res://scenes/UI/Retry Butt.png" id="3_tqh45"]
 
