@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dl4w0m7apxfde"]
+[gd_scene load_steps=87 format=3 uid="uid://dl4w0m7apxfde"]
 
 [ext_resource type="Script" uid="uid://btjp4n22yr72b" path="res://scenes/playMusictoThePlants/play_music_game.gd" id="1_5gchd"]
 [ext_resource type="Texture2D" uid="uid://oy8miwks2qcl" path="res://scenes/playMusictoThePlants/Keys/A-Key.png" id="2_2n2nl"]
@@ -31,6 +31,7 @@
 [ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="29_a35ed"]
 [ext_resource type="Texture2D" uid="uid://cnmgye8caar03" path="res://scenes/playMusictoThePlants/progress bars/red_bar.png" id="29_v8o0s"]
 [ext_resource type="Script" uid="uid://hsrnrnasducc" path="res://scenes/playMusictoThePlants/texture_progress_bar.gd" id="30_a35ed"]
+[ext_resource type="PackedScene" uid="uid://c3wiftfn2xpln" path="res://scenes/UI/ui.tscn" id="32_xp7ce"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wgkd"]
 atlas = ExtResource("2_2n2nl")
@@ -577,3 +578,18 @@ texture_progress = ExtResource("29_v8o0s")
 script = ExtResource("30_a35ed")
 
 [node name="texutre" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("32_xp7ce")]
+
+[node name="CountLabel" parent="UI/ButtonsAndLabels" index="2"]
+visible = false
+
+[node name="LivesLabel" parent="UI/ButtonsAndLabels" index="3"]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="UI"]
