@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bss42ih7jg8at"]
+
+[ext_resource type="Script" uid="uid://bm0sx7swbxy3d" path="res://scenes/metalDetector/metal_detector.gd" id="1_5newi"]
+[ext_resource type="AudioStream" uid="uid://dyb8gfkcnxi6x" path="res://scenes/metalDetector/coin-recieved-230517.mp3" id="2_uhwuk"]
+[ext_resource type="FontFile" uid="uid://cds6pvdbwwwc4" path="res://fonts/MorrisRomanBlack.ttf" id="3_uhwuk"]
+[ext_resource type="Texture2D" uid="uid://k7lu4g408i8t" path="res://scenes/metalDetector/mine_Background.png" id="4_u2nk2"]
+[ext_resource type="PackedScene" uid="uid://c3wiftfn2xpln" path="res://scenes/UI/ui.tscn" id="5_uhwuk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j888v"]
+font = ExtResource("3_uhwuk")
+font_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_jnds5"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rs7pw"]
+gradient = SubResource("Gradient_jnds5")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.89719623, 0.12616822)
+
+[node name="MetalDetector" type="Node2D"]
+script = ExtResource("1_5newi")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(29, 20)
+stream = ExtResource("2_uhwuk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 29.0
+offset_top = 20.0
+offset_right = 101.0
+offset_bottom = 46.0
+text = "Mama"
+label_settings = SubResource("LabelSettings_j888v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 650.0
+texture = ExtResource("4_u2nk2")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(742, 288)
+texture = SubResource("GradientTexture2D_rs7pw")
+
+[node name="UI" parent="." instance=ExtResource("5_uhwuk")]
+
+[node name="CountLabel" parent="UI/ButtonsAndLabels" index="2"]
+visible = false
+
+[node name="LivesLabel" parent="UI/ButtonsAndLabels" index="3"]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="UI"]
